@@ -26,8 +26,8 @@ public class CreateNFT extends AppCompatActivity {
     EditText warrantyPrd;
     EditText serialNo;
     Button scanBar;
-    Button imageCap;
-    ImageView imageProduct;
+    Button imageCap,confirmBtn;
+    ImageView imageProduct,backView;
     private static final int Image_Capture_Code = 1;
 
     @Override
@@ -43,6 +43,17 @@ public class CreateNFT extends AppCompatActivity {
         scanBar = findViewById(R.id.scanProduct);
         imageCap = findViewById(R.id.imageCap);
         imageProduct = findViewById(R.id.productImage);
+        backView = findViewById(R.id.backBtn);
+        confirmBtn = findViewById(R.id.confirm);
+
+        backView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
 
         scanBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +69,11 @@ public class CreateNFT extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     public void scanBarCode(){

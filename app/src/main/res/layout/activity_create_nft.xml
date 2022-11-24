@@ -9,17 +9,24 @@
     android:background="@color/homePurple">
 
     <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_margin="10dp"/>
+
+    <ImageView
         android:id="@+id/productImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/nft"
         android:layout_gravity="center"
-        android:layout_margin="5dp"/>
+        android:layout_margin="2dp"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp">
 
@@ -37,7 +44,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp">
 
@@ -55,7 +62,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp">
 
@@ -74,7 +81,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp">
 
@@ -92,7 +99,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="20dp">
 
@@ -129,6 +136,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Barcode"
+            android:textColor="@color/homePurple"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle"
+            android:layout_margin="10dp"
+            android:padding="5dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
             android:textColor="@color/homePurple"
             android:layout_gravity="center"
             android:background="@drawable/rectangle"
