@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -28,7 +30,10 @@ public class CreateNFT extends AppCompatActivity {
     Button scanBar;
     Button imageCap,confirmBtn;
     ImageView imageProduct,backView;
+    LottieAnimationView animate;
     private static final int Image_Capture_Code = 1;
+    int captureCnt = 0;
+//    int scannerCnt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +50,50 @@ public class CreateNFT extends AppCompatActivity {
         imageProduct = findViewById(R.id.productImage);
         backView = findViewById(R.id.backBtn);
         confirmBtn = findViewById(R.id.confirm);
+        animate = findViewById(R.id.animate);
 
         backView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String addTrans = transAdd.getText().toString();
+                String namePro = productName.getText().toString();
+                String descPro = productDesc.getText().toString();
+                String prdWarr = warrantyPrd.getText().toString();
+                String noSrl = serialNo.getText().toString();
+                if(TextUtils.isEmpty(addTrans)){
+                    transAdd.setError("Mandatory Field");
+                    return;
+                }
+                if(TextUtils.isEmpty(namePro)){
+                    productName.setError("Mandatory Field");
+                    return;
+                }
+                if(TextUtils.isEmpty(descPro)){
+                    productDesc.setError("Mandatory Field");
+                    return;
+                }
+                if(TextUtils.isEmpty(prdWarr)){
+                    warrantyPrd.setError("Mandatory Field");
+                    return;
+                }
+                if(TextUtils.isEmpty(noSrl)){
+                    serialNo.setError("Mandatory Field");
+                    return;
+                }
+                if(captureCnt==0){
+                    Toast.makeText(CreateNFT.this, "Please upload product photo", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                animate.setVisibility(View.VISIBLE);
+                animate.playAnimation();
+
             }
         });
 
@@ -77,6 +121,7 @@ public class CreateNFT extends AppCompatActivity {
     }
 
     public void scanBarCode(){
+
         ScanOptions scanOptions = new ScanOptions();
         scanOptions.setBeepEnabled(true);
         scanOptions.setOrientationLocked(true);
@@ -92,6 +137,7 @@ public class CreateNFT extends AppCompatActivity {
     });
 
     public void openCam(){
+        captureCnt++;
         Intent cInt = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cInt,Image_Capture_Code);
     }

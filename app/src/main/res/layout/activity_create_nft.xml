@@ -154,6 +154,15 @@
 
     </LinearLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animate"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:lottie_rawRes="@raw/tick"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
+
+
 
 
 
